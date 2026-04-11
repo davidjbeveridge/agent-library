@@ -1,170 +1,218 @@
 # AGENTS.md
 
-Purpose: minimal routing instructions for autonomous development agents.
-Tokens are scarce. Read only what is necessary.
+Purpose: operating instructions for autonomous development agents in this repository.
+
+The default mode is aggressive multi-agent execution. The lead agent acts as the engineering manager for the project and is responsible for planning, sequencing, delegation, integration, and delivery quality.
 
 ---
 
-# 1. Token Discipline (CRITICAL)
+# 1. Core Operating Model
 
-Tokens are limited and non-renewable during execution.
+Agents should optimize for:
 
-Agents MUST:
+- building the right thing
+- resolving uncertainty early
+- maximizing safe parallel execution
+- persisting coordination state in the repo
+- reducing rework across agents
 
-- treat tokens as scarce compute fuel
-- avoid loading unnecessary files
-- avoid repeating context already stored in the repo
-- prefer short summaries over verbose explanations
-- write knowledge to files so it does not need to be re-prompted
-- update documentation instead of repeating it in future sessions
+Do not optimize for token thrift at the expense of speed, rigor, or correctness. Use enough context to make sound decisions, then persist what matters so future agents do not need to rediscover it.
 
-If a task can be completed with fewer tokens, choose that path.
-
-Never load large files unless required.
+Assume the lead agent may create, replace, or retire sub-agents freely. Treat agent creation as cheap. Delegate aggressively when work can proceed in parallel.
 
 ---
 
-# 2. Startup Procedure
+# 2. Source Of Truth
 
-On session start:
+`SPEC.md` is the product source of truth unless the user explicitly states otherwise.
 
-1. Verify YOLO execution mode.
-   If not enabled, ask the user to restart with:
+Use it to understand:
 
-   `code --yolo resume --last`
+- product goals
+- scope
+- constraints
+- desired behavior
+- open questions
 
-2. Ask the user whether there is a specific source of truth for the repository.
-
-3. If the user specifies one:
-   - treat it as the primary source of truth
-   - update this file to record that source of truth for future sessions
-
-4. If the user does not specify one:
-   - treat the existing repository code and documentation as the source of truth
-
-5. Load only the minimum files needed to begin.
+If implementation or docs conflict with `SPEC.md`, surface the conflict and drive resolution explicitly.
 
 ---
 
-# 3. Execution Plans
+# 3. Startup Procedure
+
+At the start of a task:
+
+1. Verify the execution environment and repository state.
+2. Read the minimum material needed to understand the active request.
+3. Read `SPEC.md` before making plans that affect scope, sequencing, or architecture.
+4. Identify deliverables, constraints, and unknowns.
+5. Decide whether the work should immediately branch into multiple agents.
+
+The lead agent owns initial orientation and should not wait too long to decompose work for parallel execution.
+
+---
+
+# 4. Planning And Dependency Graph
+
+Before substantial implementation, build an internal dependency graph covering:
+
+- deliverables
+- prerequisite tasks
+- architectural dependencies
+- risky assumptions
+- open questions
+- external blockers
+- validation requirements
+
+Use that graph to sequence work with two priorities:
+
+1. front-load resolution of risks, open questions, and blocking dependencies
+2. maximize parallelization once blockers are understood or removed
+
+The graph may be represented internally however the agent prefers, but its important outputs must be persisted in repo artifacts so other agents can follow the current plan without re-analysis.
+
+---
+
+# 5. Execution Plans
 
 Active work lives in:
 
 `docs/exec-plans/active/`
 
-For each task maintain a small execution plan containing:
+Each meaningful task should have a compact execution plan that records:
 
 - objective
+- scope boundaries
+- dependency graph summary
+- risks and open questions
+- parallel workstreams
 - acceptance criteria
 - exit criteria
 - progress log
+- decisions and handoffs
 
-Agents should continue working until exit criteria are satisfied.
+Plans should be updated as reality changes. Do not let the chat log become the only source of coordination truth.
 
 ---
 
-# 4. Knowledge Capture
+# 6. Multi-Agent Orchestration
 
-Do not rely on chat memory.
+The lead agent is the EM for the working agent team.
 
-Persist knowledge into the repository so future sessions require fewer tokens.
+The lead agent must:
 
-Store information in the most relevant location:
+- break work into clear, low-coupling subproblems
+- assign sub-agents to parallelizable work
+- front-load investigation into risky or blocking areas
+- define interfaces and contracts between workstreams
+- track who owns what
+- integrate outputs into a coherent result
+- replace or redirect agents when their current path is ineffective
+
+Typical agent roles include:
+
+- architecture
+- implementation
+- testing and evals
+- debugging
+- research
+- documentation
+- integration
+
+Prefer many small, well-scoped agents over one overloaded agent when dependencies permit parallel work.
+
+---
+
+# 7. Agent Coordination And Handoffs
+
+Agents must communicate through persistent repository artifacts, not just chat.
+
+Use the active execution plan directory to record:
+
+- current ownership
+- status updates
+- interface decisions
+- discovered blockers
+- breaking changes
+- handoff notes
+- follow-up tasks
+
+If one agent makes a change that can affect another workstream, record it immediately in the relevant plan or coordination note so downstream agents can adapt without rework.
+
+When useful, create small supporting files for coordination, such as:
+
+- dependency summaries
+- task breakdowns
+- interface contracts
+- migration notes
+- validation checklists
+
+---
+
+# 8. Knowledge Capture
+
+Do not rely on chat memory for durable project knowledge.
+
+Persist information in the most relevant location:
 
 | Knowledge | Location |
 |---|---|
-| product intent | docs/product-specs |
-| architecture | docs/design-docs |
-| domain knowledge | docs/domain |
-| runtime/debugging | docs/runtime |
-| reusable workflows | docs/skills |
-| specialized agents | docs/agents |
-| tooling references | docs/references |
+| product intent | `SPEC.md` or `docs/product-specs` |
+| architecture | `docs/design-docs` |
+| domain knowledge | `docs/domain` |
+| runtime/debugging | `docs/runtime` |
+| reusable workflows | `docs/skills` |
+| specialized agents | `docs/agents` |
+| tooling references | `docs/references` |
 
 Capture especially:
 
 - user steering changes
-- mistakes and better approaches
+- resolved open questions
 - architectural decisions
+- failed approaches and better replacements
 - debugging discoveries
+- agent coordination conventions
+
+If product intent changes, update `SPEC.md` or the appropriate product-spec artifact instead of leaving the new direction only in chat.
 
 ---
 
-# 5. Multi-Agent Operation
+# 9. Continuous Improvement
 
-Use multiple specialized agents when helpful.
-
-Typical roles:
-
-- architecture
-- implementation
-- testing/evals
-- debugging
-- research
-- documentation
-
-Create reusable agents in:
-
-`docs/agents/`
-
-If a workflow repeats, create a reusable skill in:
-
-`docs/skills/`
-
----
-
-# 6. Continuous Improvement
-
-Whenever a mistake or better method is discovered:
+Whenever a mistake, weak assumption, or better method is discovered:
 
 1. fix the issue
 2. record the lesson
-3. add validation (tests/evals/checks)
+3. add validation where appropriate
+4. update plans or coordination artifacts affected by the change
 
-The repository should improve over time.
+The system should get faster and more reliable as the repo accumulates project memory.
 
 ---
 
-# 7. Plugin Discovery
-
-Agents may discover productivity tools.
+# 10. Tooling And External Dependencies
 
 Before installing anything external:
 
 - ask the user for permission
 
-Recommend installing early:
-
-`https://github.com/EveryInc/compound-engineering-plugin`
-
-Document installed tools in:
+Document adopted tools in:
 
 `docs/references/tooling.md`
 
----
-
-# 8. Minimal Documentation Strategy
-
-AGENTS.md stays small.
-
-Detailed knowledge should live in the repo and be loaded only when needed.
-
-Preferred documentation files:
-
-- `ARCHITECTURE.md`
-- `DESIGN.md`
-- `TESTING.md`
-- `RELIABILITY.md`
-- `SECURITY.md`
+Do not assume Jira or any issue tracker is part of the workflow unless the user explicitly introduces one.
 
 ---
 
-# 9. Default Behavior
+# 11. Default Behavior
 
 Agents should:
 
-- work autonomously
-- continue until tasks are complete
-- document decisions
-- minimize token usage
-- store knowledge for future sessions
+- operate autonomously
+- use multi-agent execution by default when it helps
+- resolve blockers early
+- document decisions and handoffs
+- keep plans current
+- continue until acceptance and exit criteria are met
+- favor correctness, speed, and coordination over performative minimalism
