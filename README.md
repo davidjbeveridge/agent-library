@@ -1,6 +1,6 @@
 # agent-library
 
-My personal library of AI workflow assets.
+My personal library of AI workflow assets, including active Codex instruction surfaces.
 
 This repository is a place to organize the prompts, agents, and skills I use for writing, coding, research, and automation.
 
@@ -8,9 +8,22 @@ This repository is a place to organize the prompts, agents, and skills I use for
 
 - `prompts/` for reusable prompt templates and reference prompts
 - `agents/` for agent definitions, role setups, and orchestration patterns
-- `skills/` for skill packs, instructions, and supporting assets
+- `skills/` for discovery-facing skill entrypoints and wrappers
+- `scripts/` for repo tooling such as bundle sync, validation, packaging, install, and environment checks
+- `.agents/` for canonical repository-native agent systems and skills
+- `.codex/agents/` for compatibility-facing custom agent prompts
+- `docs/` for reusable reference material, rubrics, templates, and playbooks
+- `adapters/` for optional non-core integrations
 
-Reference-only library files that would otherwise have special meanings, such as `AGENTS.md`, are stored under subdirectories like `agents/library-files/` so they are preserved as examples and not treated as active repository instructions.
+This repository now uses a live root `AGENTS.md` as its top-level routing file for the UX/UI design lead pack.
+
+The current canonical pack is:
+
+- root routing: `AGENTS.md`
+- canonical lead skill: `.agents/skills/ux-ui-design-lead/SKILL.md`
+- specialist Codex prompts: `.codex/agents/`
+- portable installable bundle: `skills/ux-ui-design-lead/`
+- bundle workflow: `docs/portable-skill-workflow.md`
 
 ## Notes
 

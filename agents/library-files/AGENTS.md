@@ -22,11 +22,17 @@ Assume the lead agent may create, replace, or retire sub-agents freely. Treat ag
 
 ---
 
-# 2. Source Of Truth
+# 2. Task Inputs And Source Of Truth
 
-`SPEC.md` is the product source of truth unless the user explicitly states otherwise.
+The user may provide product and task intent through any combination of:
 
-Use it to understand:
+- a spec file
+- multiple repository files
+- a Jira task or other tracker item
+- prompt text
+- existing code and docs
+
+At task start, identify the effective source of truth for the current request and use it to understand:
 
 - product goals
 - scope
@@ -34,7 +40,7 @@ Use it to understand:
 - desired behavior
 - open questions
 
-If implementation or docs conflict with `SPEC.md`, surface the conflict and drive resolution explicitly.
+If multiple sources conflict, surface the conflict and drive resolution explicitly.
 
 ---
 
@@ -44,7 +50,7 @@ At the start of a task:
 
 1. Verify the execution environment and repository state.
 2. Read the minimum material needed to understand the active request.
-3. Read `SPEC.md` before making plans that affect scope, sequencing, or architecture.
+3. Read the relevant source material before making plans that affect scope, sequencing, or architecture.
 4. Identify deliverables, constraints, and unknowns.
 5. Decide whether the work should immediately branch into multiple agents.
 
@@ -157,7 +163,7 @@ Persist information in the most relevant location:
 
 | Knowledge | Location |
 |---|---|
-| product intent | `SPEC.md` or `docs/product-specs` |
+| product intent | provided task inputs or `docs/product-specs` |
 | architecture | `docs/design-docs` |
 | domain knowledge | `docs/domain` |
 | runtime/debugging | `docs/runtime` |
@@ -174,7 +180,7 @@ Capture especially:
 - debugging discoveries
 - agent coordination conventions
 
-If product intent changes, update `SPEC.md` or the appropriate product-spec artifact instead of leaving the new direction only in chat.
+If product intent changes, update the relevant repository artifact instead of leaving the new direction only in chat.
 
 ---
 
@@ -201,7 +207,7 @@ Document adopted tools in:
 
 `docs/references/tooling.md`
 
-Do not assume Jira or any issue tracker is part of the workflow unless the user explicitly introduces one.
+Do not assume Jira or any issue tracker is part of the workflow by default, but use one when the user provides it as part of the task context.
 
 ---
 

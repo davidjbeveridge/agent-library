@@ -1,0 +1,4 @@
+interface:
+  display_name: "UX/UI Design Lead"
+  short_description: "Local-first UX/UI audit, redesign, simplification, and browser-grounded design guidance"
+  default_prompt: "Use $ux-ui-design-lead to analyze this interface from visuals, semantics, accessibility, user jobs, and implementation reality, then produce implementation-ready recommendations."
