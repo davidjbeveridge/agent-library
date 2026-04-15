@@ -1,0 +1,12 @@
+direction: right
+
+client: Client
+api: API
+worker: Worker
+store: Asset Store
+
+client -> api: Submit brief
+api -> worker: Queue render job
+worker -> store: Write SVG/PNG outputs
+api -> store: Read artifacts
+client -> store: Download packaged assets

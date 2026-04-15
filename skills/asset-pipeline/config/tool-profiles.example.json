@@ -1,0 +1,26 @@
+{
+  "minimum_deterministic": ["python3", "inkscape", "magick", "ffmpeg"],
+  "enhanced_deterministic": [
+    "svgo",
+    "picosvg",
+    "resvg",
+    "rsvg-convert",
+    "potrace",
+    "vtracer",
+    "vips",
+    "gmic",
+    "dot",
+    "plantuml",
+    "d2",
+    "mmdc",
+    "vl-convert",
+    "oxipng",
+    "pngquant",
+    "cwebp",
+    "img2webp",
+    "avifenc",
+    "jpegoptim",
+    "exiftool"
+  ],
+  "local_ml_python_modules": ["torch", "diffusers"]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Asset Pipeline"
+  short_description: "CLI-first local asset generation, editing, review, comparison, and packaging for vector, raster, diagrams, charts, and optional local ML workflows"
+  default_prompt: "Use $asset-pipeline to choose the right deterministic or local-ML lane, create or edit the asset, review whether it communicates the intended semantics, and package the result with explicit file outputs and fallback notes."

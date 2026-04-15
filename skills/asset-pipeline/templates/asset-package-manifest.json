@@ -1,0 +1,10 @@
+{
+  "bundle": "asset-pipeline",
+  "source_assets": [],
+  "outputs": [],
+  "targets": [],
+  "optimizations_applied": [],
+  "optimizations_skipped": [],
+  "metadata_policy": "strip-when-safe",
+  "notes": []
+}

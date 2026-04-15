@@ -1,0 +1,17 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Activation rate by week",
+  "data": {
+    "values": [
+      {"week": "W1", "rate": 0.21},
+      {"week": "W2", "rate": 0.28},
+      {"week": "W3", "rate": 0.34},
+      {"week": "W4", "rate": 0.31}
+    ]
+  },
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {"field": "week", "type": "ordinal", "title": "Week"},
+    "y": {"field": "rate", "type": "quantitative", "title": "Activation rate", "axis": {"format": ".0%"}}
+  }
+}

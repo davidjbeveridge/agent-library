@@ -1,0 +1,8 @@
+backend: diffusers
+model: runwayml/stable-diffusion-v1-5
+device: auto
+dtype: auto
+cache_dir: ~/.cache/asset-pipeline/models
+default_width: 1024
+default_height: 1024
+default_steps: 30
