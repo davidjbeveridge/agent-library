@@ -2,9 +2,9 @@
 
 This directory contains compatibility-facing custom specialist prompts for Codex inside this repository.
 
-The canonical design methodology does not live here. It lives in:
+The canonical design methodology for the UX/UI package does not live here. It lives in:
 
-- `AGENTS.md`
+- `skills/ux-ui-design-lead/README.md`
 - `.agents/skills/ux-ui-design-lead/SKILL.md`
 - `docs/`
 

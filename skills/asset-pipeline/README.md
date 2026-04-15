@@ -2,7 +2,19 @@
 
 Portable user-skill bundle for CLI-first asset generation, editing, review, comparison, and packaging.
 
-This README is written so another agent can be pointed at this folder and told to install the skill and its optional dependencies without guessing.
+This README is the package-local install contract for agents pointed directly at `skills/asset-pipeline/`.
+
+## When An Agent Is Pointed At This Folder
+
+The install agent should ask:
+
+1. `Install this skill project-locally or into a global Codex config like ~/.codex/?`
+2. `Do you want install only, or install plus bootstrap and validation?`
+3. `Do you want optional heavy dependencies installed as well, especially deterministic graphics tools or local ML packages?`
+
+Default recommendation:
+
+- `global Codex config`
 
 ## What This Bundle Is
 
@@ -14,13 +26,11 @@ This README is written so another agent can be pointed at this folder and told t
 - Example inputs: `examples/*`
 - Templates and config: `templates/*`, `config/*`
 
-The bundle is self-contained. It does not require any repo-root files.
+The bundle is self-contained and does not depend on repo-root files.
 
-## Install The Skill
+## Install
 
-### Generic Install Rule
-
-Copy this entire folder into the user's global skills library under the name `asset-pipeline`.
+Copy this entire folder into a skills library under the name `asset-pipeline`.
 
 Target layout:
 
@@ -39,9 +49,9 @@ Target layout:
     config/
 ```
 
-### Codex Example
+### Global Codex Config
 
-If the user's Codex home is `~/.codex`, install to:
+If the target is `~/.codex/skills`:
 
 ```bash
 mkdir -p ~/.codex/skills
@@ -49,32 +59,28 @@ rsync -a ./ ~/.codex/skills/asset-pipeline/
 chmod +x ~/.codex/skills/asset-pipeline/bin/* ~/.codex/skills/asset-pipeline/scripts/doctor.py
 ```
 
-If copying from elsewhere, run those commands from inside this folder.
+### Project-Local
 
-### Validate The Install
+If the target is a project-local skills directory:
 
 ```bash
-~/.codex/skills/asset-pipeline/scripts/doctor.py
-~/.codex/skills/asset-pipeline/bin/asset-svg-edit --help
-~/.codex/skills/asset-pipeline/bin/asset-review --help
+mkdir -p ./skills
+rsync -a ./ ./skills/asset-pipeline/
+chmod +x ./skills/asset-pipeline/bin/* ./skills/asset-pipeline/scripts/doctor.py
 ```
 
-## Dependency Tiers
+## Bootstrap
 
-Install only the tier you need.
+Bootstrap is optional. Stop after `install` unless the user asked for dependency setup.
 
-### Tier 0: No-Tool Fallback
+### Dependency Tiers
 
-No extra dependencies beyond `python3`.
+#### Tier 0: No-Tool Fallback
 
-Capabilities:
+- required: `python3`
+- supports raw SVG and text-spec generation, review reports, preserved recipes, and missing-dependency reporting
 
-- raw SVG and text-spec generation
-- structured review reports
-- preserved prompt/spec recipes
-- clear missing-dependency output
-
-### Tier 1: Minimum Deterministic
+#### Tier 1: Minimum Deterministic
 
 Recommended tools:
 
@@ -83,14 +89,7 @@ Recommended tools:
 - `imagemagick`
 - `ffmpeg`
 
-Capabilities:
-
-- SVG edit and render
-- raster conversion and composition
-- screenshot and frame processing
-- compare and review flows
-
-### Tier 2: Enhanced Deterministic
+#### Tier 2: Enhanced Deterministic
 
 Add:
 
@@ -114,32 +113,26 @@ Add:
 - `jpegoptim`
 - `exiftool`
 
-Capabilities:
+#### Tier 3: Local ML
 
-- SVG normalization and optimization
-- raster-to-vector conversion
-- text-native diagram rendering
-- chart rendering
-- better optimization and packaging
-
-### Tier 3: Local ML
-
-Add Python packages and local weights:
+Add:
 
 - `torch`
 - `diffusers`
 - `Pillow`
+- `transformers`
+- `accelerate`
+- `safetensors`
 - local model weights compatible with the backend config
 
-Capabilities:
+### Python Interpreter Rule
 
-- text-to-image
-- img2img
-- inpainting / masked editing
+Use the same Python interpreter for install and runtime. If the machine has multiple Python installations, prefer one of:
 
-## Recommended Install Commands
+- an activated virtual environment
+- a Homebrew Python such as `/opt/homebrew/bin/python3`
 
-Use the commands that fit the host OS and package manager.
+After installing Python packages, make sure the corresponding user or venv bin directory is on `PATH`.
 
 ### macOS With Homebrew
 
@@ -152,15 +145,23 @@ brew install inkscape imagemagick ffmpeg
 Enhanced deterministic tier:
 
 ```bash
-brew install librsvg potrace vtracer libvips graphviz plantuml d2 pngquant webp libavif jpegoptim exiftool
-npm install -g svgo @mermaid-js/mermaid-cli vega-lite vl-convert
-python3 -m pip install --user picosvg
+brew install librsvg potrace vips graphviz plantuml d2 pngquant webp libavif jpegoptim exiftool gmic resvg oxipng
+npm install -g svgo @mermaid-js/mermaid-cli
+python3 -m pip install --user picosvg vl-convert-python
+cargo install vtracer --locked
 ```
 
 Notes:
 
-- `resvg` may require a separate tap or manual install depending on the machine.
-- `gmic` is optional and may not be packaged everywhere.
+- `vips` is the Homebrew formula name, not `libvips`
+- `vtracer` is installed via Cargo in this documented path
+- `vl-convert-python` may expose only a Python module on some systems; if no `vl-convert` executable appears on `PATH`, provide a thin wrapper command before claiming the chart lane is bootstrapped
+
+Local ML tier:
+
+```bash
+python3 -m pip install --user diffusers torch torchvision transformers accelerate safetensors
+```
 
 ### Debian / Ubuntu
 
@@ -174,58 +175,44 @@ sudo apt-get install -y inkscape imagemagick ffmpeg python3 python3-pip
 Enhanced deterministic tier:
 
 ```bash
-sudo apt-get install -y librsvg2-bin potrace vtracer libvips-tools graphviz plantuml pngquant webp libavif-bin jpegoptim libimage-exiftool-perl
-npm install -g svgo @mermaid-js/mermaid-cli vega-lite vl-convert
-python3 -m pip install --user picosvg
+sudo apt-get install -y librsvg2-bin potrace libvips-tools graphviz plantuml pngquant webp libavif-bin jpegoptim libimage-exiftool-perl
+npm install -g svgo @mermaid-js/mermaid-cli
+python3 -m pip install --user picosvg vl-convert-python
 ```
 
-Optional tools like `d2`, `gmic`, and `resvg` may need manual install depending on distro packaging.
+Notes:
 
-### Python Local ML Environment
+- `d2`, `gmic`, `resvg`, and `vtracer` may require manual install depending on distro packaging
+- if no `vl-convert` executable appears, expose a wrapper that calls the installed Python module before marking the chart lane complete
 
-Create a dedicated virtual environment if local ML is desired:
+### Local ML Environment
+
+For a cleaner local ML setup, prefer an isolated virtual environment:
 
 ```bash
 python3 -m venv .venv-asset-pipeline
 source .venv-asset-pipeline/bin/activate
 python -m pip install --upgrade pip
-python -m pip install pillow diffusers torch transformers accelerate safetensors
+python -m pip install pillow diffusers torch torchvision transformers accelerate safetensors
 ```
 
-Then copy and edit the config:
+Then copy and edit config:
 
 ```bash
 cp config/local-ml.example.yaml config/local-ml.yaml
 ```
 
-Set the `model` field in `config/local-ml.yaml` to a local path or a model identifier that is already accessible to the environment.
+## Validate
 
-## Install Workflow For Another Agent
-
-If another LLM tool is asked to install this bundle, it should:
-
-1. Copy this folder into the user's global skills directory as `asset-pipeline`.
-2. Mark `bin/*` and `scripts/doctor.py` executable.
-3. Run `scripts/doctor.py` and record which tier is available.
-4. If the user requested deterministic tooling, install the Tier 1 or Tier 2 dependencies that match the host OS.
-5. If the user requested local ML, create an isolated Python environment and install the Tier 3 Python packages.
-6. Validate with the commands in the next section.
-7. Stop and report clearly if a package is unavailable on the host package manager instead of silently skipping it.
-
-## Validation Commands
-
-Run these after install:
+### Portable Bundle Validation
 
 ```bash
 ./scripts/doctor.py
 ./bin/asset-svg-edit --help
-./bin/asset-svg-render --help
-./bin/asset-raster --help
 ./bin/asset-review --help
-./bin/asset-package --help
 ```
 
-Smoke test the minimum deterministic tier:
+### Deterministic Tool Validation
 
 ```bash
 ./bin/asset-svg-render \
@@ -234,24 +221,24 @@ Smoke test the minimum deterministic tier:
   --format png \
   --width 256
 
-./bin/asset-review \
-  --input examples/sample.svg \
-  --intent examples/sample-review-intent.md \
-  --output /tmp/asset-pipeline-sample.review.md
+./bin/asset-diagram \
+  --spec examples/diagram-example.d2 \
+  --engine d2 \
+  --output /tmp/asset-pipeline-diagram.svg
 ```
 
-Smoke test honest fallback behavior:
+### Local ML Validation
+
+Validate only if the user asked for local ML bootstrap and a real model is configured:
 
 ```bash
-./bin/asset-chart \
-  --spec examples/chart-example.vl.json \
-  --output /tmp/asset-pipeline-chart.svg \
-  --format svg
+./bin/asset-img-gen \
+  --prompt "Minimal geometric hero image for a developer tools blog" \
+  --output /tmp/asset-pipeline-gen.png \
+  --backend-config config/local-ml.yaml
 ```
 
-If `vl-convert` is missing, the command should preserve a spec and fail clearly rather than fabricating a render.
-
-## Invocation Examples
+## Use
 
 After install, invoke the main skill with prompts like:
 

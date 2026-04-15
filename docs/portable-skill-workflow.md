@@ -6,10 +6,14 @@ Use this workflow to rebuild, validate, package, and install the globally portab
 
 The repository keeps its canonical authoring surfaces in:
 
-- `AGENTS.md`
 - `.agents/skills/ux-ui-design-lead/`
 - `.codex/agents/`
 - `docs/`
+
+Repo-root installation and package routing now live in:
+
+- `INSTALL.md`
+- `README.md`
 
 The globally installable bundle lives in:
 
