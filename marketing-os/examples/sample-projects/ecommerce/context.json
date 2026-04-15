@@ -1,0 +1,16 @@
+{
+  "projectId": "sample-ecommerce",
+  "projectName": "Northline Goods",
+  "brandName": "Northline Goods",
+  "businessDescription": "Premium insulated lunch gear sold direct to consumers.",
+  "businessModel": "ecommerce",
+  "lifecycleStage": "growth",
+  "primaryGoals": ["Improve conversion and repeat purchase rate"],
+  "primaryOffer": { "name": "Insulated Lunch Kit", "pricePoint": "$79" },
+  "objections": ["Too expensive", "Not sure it stays cold all day"],
+  "desiredOutcomes": ["Convenient healthy lunch routine"],
+  "currentChannels": ["meta ads", "email", "organic social"],
+  "knownBottlenecks": ["weak-repeat-purchase"],
+  "evidenceQuality": "medium",
+  "sourceReferences": [{ "id": "seed-3", "kind": "user-input", "label": "Sample ecommerce fixture" }]
+}

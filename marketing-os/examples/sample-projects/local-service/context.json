@@ -1,0 +1,17 @@
+{
+  "projectId": "sample-local-service",
+  "projectName": "Peak Plumbing",
+  "brandName": "Peak Plumbing",
+  "businessDescription": "Emergency and residential plumbing service in Denver.",
+  "businessModel": "local-service",
+  "lifecycleStage": "growth",
+  "primaryGoals": ["Increase qualified calls from homeowners in target zip codes"],
+  "ICPs": ["Homeowners with urgent plumbing issues"],
+  "buyingTriggers": ["Burst pipe", "Water heater failure"],
+  "trustSignals": ["5-star reviews", "Licensed and insured", "Same-day service"],
+  "currentChannels": ["Google Business Profile", "referrals"],
+  "knownBottlenecks": ["low-trust-above-fold"],
+  "currentCTAs": ["Call now", "Request service"],
+  "evidenceQuality": "medium",
+  "sourceReferences": [{ "id": "seed-2", "kind": "user-input", "label": "Sample local service fixture" }]
+}

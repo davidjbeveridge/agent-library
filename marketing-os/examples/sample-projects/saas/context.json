@@ -1,0 +1,22 @@
+{
+  "projectId": "sample-saas",
+  "projectName": "SignalStack",
+  "brandName": "SignalStack",
+  "website": "https://signalstack.example",
+  "businessDescription": "A product analytics tool for early-stage SaaS teams.",
+  "businessModel": "saas",
+  "lifecycleStage": "launch",
+  "primaryGoals": ["Acquire first 50 paying customers"],
+  "ICPs": ["Seed to Series A SaaS founders", "Growth leads at small SaaS teams"],
+  "jobsToBeDone": ["Understand user activation blockers", "Spot retention issues before churn grows"],
+  "pains": ["Analytics setup feels heavy", "Teams do not trust event coverage"],
+  "desiredOutcomes": ["Faster activation insight", "Clear retention reporting"],
+  "objections": ["Implementation will be slow", "Existing tools are good enough"],
+  "proofPoints": ["Set up in under an hour", "Used by 12 beta customers"],
+  "trustSignals": ["Beta customer quotes", "Public docs"],
+  "currentChannels": ["founder-led outreach", "content"],
+  "knownBottlenecks": ["poor-conversion"],
+  "currentCTAs": ["Book a demo", "Start free trial"],
+  "evidenceQuality": "medium",
+  "sourceReferences": [{ "id": "seed-1", "kind": "user-input", "label": "Sample SaaS fixture" }]
+}

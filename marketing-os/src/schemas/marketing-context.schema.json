@@ -1,0 +1,839 @@
+{
+  "$ref": "#/definitions/MarketingContext",
+  "definitions": {
+    "MarketingContext": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string"
+        },
+        "projectName": {
+          "type": "string"
+        },
+        "brandName": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "businessDescription": {
+          "type": "string"
+        },
+        "businessModel": {
+          "type": "string",
+          "enum": [
+            "saas",
+            "plg",
+            "ecommerce",
+            "info-product",
+            "local-service",
+            "agency",
+            "b2b-service",
+            "developer-tools",
+            "open-source-hybrid",
+            "unknown"
+          ]
+        },
+        "lifecycleStage": {
+          "type": "string",
+          "enum": [
+            "idea",
+            "prelaunch",
+            "launch",
+            "growth",
+            "mature",
+            "stagnant",
+            "turnaround",
+            "unknown"
+          ]
+        },
+        "geography": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "languages": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "primaryOffer": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "audience": {
+              "type": "string"
+            },
+            "pricePoint": {
+              "type": "string"
+            },
+            "margin": {
+              "type": "string"
+            },
+            "packaging": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "secondaryOffers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/primaryOffer"
+          }
+        },
+        "pricingModel": {
+          "type": "string"
+        },
+        "pricePoints": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "packaging": {
+          "type": "string"
+        },
+        "margins": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "salesMotion": {
+          "type": "string"
+        },
+        "onboardingModel": {
+          "type": "string"
+        },
+        "retentionModel": {
+          "type": "string"
+        },
+        "ICPs": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "personas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "segment": {
+                "type": "string"
+              },
+              "pains": {
+                "$ref": "#/definitions/MarketingContext/properties/geography"
+              },
+              "desiredOutcomes": {
+                "$ref": "#/definitions/MarketingContext/properties/geography"
+              },
+              "objections": {
+                "$ref": "#/definitions/MarketingContext/properties/geography"
+              },
+              "buyingTriggers": {
+                "$ref": "#/definitions/MarketingContext/properties/geography"
+              },
+              "awarenessStage": {
+                "type": "string"
+              },
+              "provenance": {
+                "type": "object",
+                "properties": {
+                  "producer": {
+                    "type": "string"
+                  },
+                  "sourceType": {
+                    "type": "string",
+                    "enum": [
+                      "native-skill",
+                      "vendored-wrapper",
+                      "tool-adapter",
+                      "orchestrator",
+                      "manual"
+                    ]
+                  },
+                  "sourceId": {
+                    "type": "string"
+                  },
+                  "generatedAt": {
+                    "type": "string"
+                  },
+                  "notes": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "producer",
+                  "sourceType",
+                  "sourceId",
+                  "generatedAt"
+                ],
+                "additionalProperties": false
+              },
+              "confidence": {
+                "type": "object",
+                "properties": {
+                  "topic": {
+                    "type": "string"
+                  },
+                  "level": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ]
+                  },
+                  "numericScore": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "rationale": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "topic",
+                  "level",
+                  "rationale"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "jobsToBeDone": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "pains": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "desiredOutcomes": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "objections": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "buyingTriggers": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "awarenessStageBySegment": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "sophisticationStage": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "alternatives": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "competitors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "website": {
+                "type": "string"
+              },
+              "notes": {
+                "type": "string"
+              },
+              "differentiation": {
+                "type": "string"
+              },
+              "evidence": {
+                "type": "object",
+                "properties": {
+                  "summary": {
+                    "type": "string"
+                  },
+                  "sourceIds": {
+                    "$ref": "#/definitions/MarketingContext/properties/geography"
+                  },
+                  "strength": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ]
+                  },
+                  "gaps": {
+                    "$ref": "#/definitions/MarketingContext/properties/geography"
+                  }
+                },
+                "required": [
+                  "summary",
+                  "sourceIds",
+                  "strength"
+                ],
+                "additionalProperties": false
+              },
+              "confidence": {
+                "$ref": "#/definitions/MarketingContext/properties/personas/items/properties/confidence"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "differentiation": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "uniqueMechanism": {
+          "type": "string"
+        },
+        "positioningStatement": {
+          "type": "string"
+        },
+        "claims": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "proofPoints": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "trustSignals": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "currentChannels": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "historicalChannels": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "ownedAssets": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "funnelStages": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "knownBottlenecks": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "messagingByStage": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "currentCTAs": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "primaryGoals": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "secondaryGoals": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "kpiTree": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "businessModel": {
+                "type": "string",
+                "enum": [
+                  "saas",
+                  "plg",
+                  "ecommerce",
+                  "info-product",
+                  "local-service",
+                  "agency",
+                  "b2b-service",
+                  "developer-tools",
+                  "open-source-hybrid",
+                  "unknown"
+                ]
+              },
+              "northStar": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string",
+                    "enum": [
+                      "leading",
+                      "lagging"
+                    ]
+                  },
+                  "metric": {
+                    "type": "string"
+                  },
+                  "target": {
+                    "type": "string"
+                  },
+                  "currentValue": {
+                    "type": "string"
+                  },
+                  "notes": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "category",
+                  "metric"
+                ],
+                "additionalProperties": false
+              },
+              "leadingIndicators": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "category": {
+                      "type": "string",
+                      "enum": [
+                        "leading",
+                        "lagging"
+                      ]
+                    },
+                    "metric": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "currentValue": {
+                      "type": "string"
+                    },
+                    "notes": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "category",
+                    "metric"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "laggingIndicators": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "category": {
+                      "type": "string",
+                      "enum": [
+                        "leading",
+                        "lagging"
+                      ]
+                    },
+                    "metric": {
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "string"
+                    },
+                    "currentValue": {
+                      "type": "string"
+                    },
+                    "notes": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "category",
+                    "metric"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "businessModel",
+              "leadingIndicators",
+              "laggingIndicators"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "constraints": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "complianceLimits": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "budgetAssumptions": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "timeHorizon": {
+          "type": "string"
+        },
+        "teamCapacity": {
+          "type": "string"
+        },
+        "riskTolerance": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "customerVoiceInsights": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              },
+              "details": {
+                "type": "string"
+              },
+              "provenance": {
+                "$ref": "#/definitions/MarketingContext/properties/personas/items/properties/provenance"
+              },
+              "evidence": {
+                "$ref": "#/definitions/MarketingContext/properties/competitors/items/properties/evidence"
+              },
+              "confidence": {
+                "$ref": "#/definitions/MarketingContext/properties/personas/items/properties/confidence"
+              }
+            },
+            "required": [
+              "id",
+              "summary"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "reviewInsights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/customerVoiceInsights/items"
+          }
+        },
+        "competitorInsights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/customerVoiceInsights/items"
+          }
+        },
+        "marketInsights": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/customerVoiceInsights/items"
+          }
+        },
+        "evidenceQuality": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "confidenceScores": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/personas/items/properties/confidence"
+          }
+        },
+        "openQuestions": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "hypotheses": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "experiments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "hypothesis": {
+                "type": "string"
+              },
+              "channel": {
+                "type": "string"
+              },
+              "successCriteria": {
+                "$ref": "#/definitions/MarketingContext/properties/geography"
+              },
+              "expectedImpact": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "proposed",
+                  "running",
+                  "completed",
+                  "cancelled"
+                ]
+              },
+              "evidence": {
+                "$ref": "#/definitions/MarketingContext/properties/competitors/items/properties/evidence"
+              },
+              "confidence": {
+                "$ref": "#/definitions/MarketingContext/properties/personas/items/properties/confidence"
+              },
+              "results": {
+                "$ref": "#/definitions/MarketingContext/properties/geography"
+              },
+              "learnings": {
+                "$ref": "#/definitions/MarketingContext/properties/geography"
+              }
+            },
+            "required": [
+              "id",
+              "hypothesis"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "results": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "learnings": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "failedIdeas": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "nextRecommendedActions": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "landingPages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "notes": {
+                "type": "string"
+              },
+              "provenance": {
+                "$ref": "#/definitions/MarketingContext/properties/personas/items/properties/provenance"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "title"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "ads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/landingPages/items"
+          }
+        },
+        "emailSequences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/landingPages/items"
+          }
+        },
+        "blogPosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/landingPages/items"
+          }
+        },
+        "socialAssets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/landingPages/items"
+          }
+        },
+        "salesAssets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/landingPages/items"
+          }
+        },
+        "offers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/landingPages/items"
+          }
+        },
+        "creativeConcepts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MarketingContext/properties/landingPages/items"
+          }
+        },
+        "vendoredSkillAvailability": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        },
+        "externalToolAvailability": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        },
+        "executionModes": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "missingCapabilities": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "recommendedSetups": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        },
+        "sourceReferences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "user-input",
+                  "document",
+                  "website",
+                  "tool",
+                  "vendored-skill",
+                  "manual-note"
+                ]
+              },
+              "label": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "excerpt": {
+                "type": "string"
+              },
+              "collectedAt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "label"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "statement": {
+                "type": "string"
+              },
+              "impact": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "active",
+                  "validated",
+                  "rejected"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "statement",
+              "impact",
+              "status"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "notes": {
+          "$ref": "#/definitions/MarketingContext/properties/geography"
+        }
+      },
+      "required": [
+        "projectId"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

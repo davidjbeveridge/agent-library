@@ -1,0 +1,66 @@
+{
+  "dependencies": [
+    {
+      "id": "coreyhaines31-marketingskills",
+      "displayName": "Corey Haines Marketing Skills",
+      "path": "third_party/coreyhaines31-marketingskills",
+      "enabled": true,
+      "importedCommitSha": "9125d8216e38945bcca5e712287cec06e9e96523",
+      "license": "MIT",
+      "trustLevel": "semi-trusted",
+      "notes": ["Preferred foundation for general strategy, CRO, pricing, lifecycle, and revops."],
+      "wrappers": [
+        "corey-product-marketing-context",
+        "corey-cro",
+        "corey-seo",
+        "corey-lifecycle",
+        "corey-pricing",
+        "corey-revops"
+      ],
+      "upstreamUrl": "https://github.com/coreyhaines31/marketingskills.git"
+    },
+    {
+      "id": "realkimbarrett-advertising-skills",
+      "displayName": "Kim Barrett Advertising Skills",
+      "path": "third_party/realkimbarrett-advertising-skills",
+      "enabled": true,
+      "importedCommitSha": "45f4a4a1dabe24113193369b55b929b1de4ff04a",
+      "license": "NOASSERTION",
+      "trustLevel": "semi-trusted",
+      "notes": ["Primary direct-response and paid-acquisition layer. Upstream license file was not present at import time."],
+      "wrappers": [
+        "kim-avatar",
+        "kim-offer",
+        "kim-angles",
+        "kim-objections",
+        "kim-ad-copy",
+        "kim-funnel"
+      ],
+      "upstreamUrl": "https://github.com/realkimbarrett/advertising-skills.git"
+    },
+    {
+      "id": "kostja94-marketing-skills",
+      "displayName": "Kostja Marketing Skills",
+      "path": "third_party/kostja94-marketing-skills",
+      "enabled": true,
+      "importedCommitSha": "c409175ac86cb71bfa496e951f723b98a6c32b1f",
+      "license": "MIT",
+      "trustLevel": "semi-trusted",
+      "notes": ["Breadth layer for SEO, page types, content, and channel adaptation."],
+      "wrappers": ["kostja-seo", "kostja-content", "kostja-page-types", "kostja-channels"],
+      "upstreamUrl": "https://github.com/kostja94/marketing-skills.git"
+    },
+    {
+      "id": "typefully-agent-skills",
+      "displayName": "Typefully Agent Skills",
+      "path": "third_party/typefully-agent-skills",
+      "enabled": true,
+      "importedCommitSha": "a57a932b0116c599a30f028874be9904f0e880ca",
+      "license": "MIT",
+      "trustLevel": "semi-trusted",
+      "notes": ["Social drafting and execution adapter layer. Scheduling and publishing require local tool health checks."],
+      "wrappers": ["typefully-draft-post", "typefully-schedule-post", "typefully-publish-post"],
+      "upstreamUrl": "https://github.com/typefully/agent-skills.git"
+    }
+  ]
+}

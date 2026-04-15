@@ -1,0 +1,17 @@
+{
+  "routes": [
+    { "taskType": "context-synthesis", "preferredWrapperPrefixes": ["corey-product-marketing-context"], "nativeFallbacks": ["context-synthesis"] },
+    { "taskType": "competitor-research", "preferredWrapperPrefixes": ["corey-seo", "kostja-seo"], "nativeFallbacks": ["competitor-research-synthesis"] },
+    { "taskType": "audience-research", "preferredWrapperPrefixes": ["kim-avatar", "kim-objections"], "nativeFallbacks": ["audience-research-synthesis"] },
+    { "taskType": "positioning", "preferredWrapperPrefixes": ["corey-product-marketing-context", "corey-pricing", "kim-offer"], "nativeFallbacks": ["positioning-brief"] },
+    { "taskType": "landing-page-audit", "preferredWrapperPrefixes": ["corey-cro", "kim-funnel", "kostja-page-types"], "nativeFallbacks": ["landing-page-audit"] },
+    { "taskType": "experiment-backlog", "preferredWrapperPrefixes": ["corey-cro", "kim-funnel"], "nativeFallbacks": ["experiment-backlog"] },
+    { "taskType": "seo-content", "preferredWrapperPrefixes": ["kostja-seo", "kostja-content", "corey-seo"], "nativeFallbacks": ["seo-content-brief"] },
+    { "taskType": "paid-acquisition", "preferredWrapperPrefixes": ["kim-avatar", "kim-offer", "kim-angles", "kim-ad-copy"], "nativeFallbacks": ["ad-angle-generator"] },
+    { "taskType": "social-execution", "preferredWrapperPrefixes": ["typefully-draft-post", "kostja-channels", "kim-ad-copy"], "nativeFallbacks": ["ad-angle-generator"] },
+    { "taskType": "lifecycle", "preferredWrapperPrefixes": ["corey-lifecycle"], "nativeFallbacks": ["lifecycle-recommendations"] },
+    { "taskType": "reporting-summary", "preferredWrapperPrefixes": ["corey-revops", "corey-lifecycle"], "nativeFallbacks": ["reporting-summary"] },
+    { "taskType": "next-step-prioritization", "preferredWrapperPrefixes": ["corey-revops", "corey-pricing"], "nativeFallbacks": ["next-step-prioritizer"] },
+    { "taskType": "workflow", "preferredWrapperPrefixes": [], "nativeFallbacks": ["next-step-prioritizer"] }
+  ]
+}

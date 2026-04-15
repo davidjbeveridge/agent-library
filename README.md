@@ -14,6 +14,7 @@ This repository is a place to organize the prompts, agents, and skills I use for
 - `.codex/agents/` for compatibility-facing custom agent prompts
 - `docs/` for reusable reference material, rubrics, templates, and playbooks
 - `adapters/` for optional non-core integrations
+- `marketing-os/` for the standalone composition-first marketing operating system subproject
 
 This repository now uses a live root `AGENTS.md` as its top-level routing file for the UX/UI design lead pack.
 
@@ -24,6 +25,10 @@ The current canonical pack is:
 - specialist Codex prompts: `.codex/agents/`
 - portable installable bundle: `skills/ux-ui-design-lead/`
 - bundle workflow: `docs/portable-skill-workflow.md`
+
+This repository also now contains:
+
+- `marketing-os/` as a standalone Node/TypeScript package for local-first, composition-first agentic marketing orchestration
 
 ## Notes
 

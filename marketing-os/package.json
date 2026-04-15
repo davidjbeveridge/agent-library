@@ -1,0 +1,36 @@
+{
+  "name": "marketing-os",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone, portable, composition-first agentic marketing operating system.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "marketing-os": "./dist/src/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "generate:schema": "tsx src/core/context/generateSchema.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "detect-capabilities": "tsx src/cli/index.ts detect-capabilities",
+    "run-workflow": "tsx src/cli/index.ts run-workflow",
+    "summarize-context": "tsx src/cli/index.ts summarize-context",
+    "propose-next-steps": "tsx src/cli/index.ts propose-next-steps",
+    "audit-vendored-dependencies": "tsx src/cli/index.ts audit-vendored-dependencies",
+    "upgrade-vendored-dependency": "tsx src/cli/index.ts upgrade-vendored-dependency"
+  },
+  "dependencies": {
+    "zod": "^3.24.1",
+    "zod-to-json-schema": "^3.24.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.1.1"
+  }
+}

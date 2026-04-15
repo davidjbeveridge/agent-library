@@ -1,0 +1,17 @@
+{
+  "tools": [
+    { "id": "web-research", "enabled": true },
+    { "id": "crawler", "enabled": true },
+    { "id": "search-console", "enabled": true },
+    { "id": "seo-suite", "enabled": true },
+    { "id": "analytics", "enabled": true },
+    { "id": "experimentation", "enabled": true },
+    { "id": "crm", "enabled": true },
+    { "id": "email", "enabled": true },
+    { "id": "google-ads", "enabled": true },
+    { "id": "meta-ads", "enabled": true },
+    { "id": "linkedin-ads", "enabled": true },
+    { "id": "typefully-api", "enabled": true },
+    { "id": "enrichment", "enabled": true }
+  ]
+}

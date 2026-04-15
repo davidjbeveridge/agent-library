@@ -1,0 +1,14 @@
+{
+  "projectId": "sample-info-product",
+  "projectName": "Clarity Sprint",
+  "brandName": "Clarity Sprint",
+  "businessDescription": "A cohort-based course for solo consultants who need sharper positioning.",
+  "businessModel": "info-product",
+  "lifecycleStage": "launch",
+  "primaryGoals": ["Fill the first cohort"],
+  "primaryOffer": { "name": "4-week cohort", "pricePoint": "$900" },
+  "ICPs": ["Independent consultants"],
+  "desiredOutcomes": ["Clear positioning", "More qualified leads"],
+  "evidenceQuality": "low",
+  "sourceReferences": [{ "id": "seed-5", "kind": "user-input", "label": "Sample info product fixture" }]
+}

@@ -1,0 +1,15 @@
+{
+  "projectId": "sample-devtool",
+  "projectName": "TraceKit",
+  "brandName": "TraceKit",
+  "businessDescription": "Open source tracing toolkit with commercial hosted plans.",
+  "businessModel": "developer-tools",
+  "lifecycleStage": "prelaunch",
+  "primaryGoals": ["Drive early adoption and hosted signups"],
+  "ICPs": ["Developer platform teams", "DevOps engineers"],
+  "jobsToBeDone": ["Debug distributed systems faster", "Adopt tracing without high ops burden"],
+  "currentChannels": ["GitHub", "docs", "community"],
+  "proofPoints": ["Open source GitHub stars", "benchmark results"],
+  "evidenceQuality": "low",
+  "sourceReferences": [{ "id": "seed-4", "kind": "user-input", "label": "Sample devtool fixture" }]
+}
