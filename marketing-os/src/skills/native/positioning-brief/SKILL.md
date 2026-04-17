@@ -1,3 +1,8 @@
+---
+name: positioning-brief
+description: Produce category framing, differentiation, proof points, and messaging strategy.
+---
+
 # positioning-brief
 
 ## Purpose

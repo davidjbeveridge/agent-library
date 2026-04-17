@@ -1,3 +1,8 @@
+---
+name: experiment-backlog
+description: Produce prioritized hypotheses and experiment ideas.
+---
+
 # experiment-backlog
 
 ## Purpose

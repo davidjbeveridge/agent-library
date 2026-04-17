@@ -1,3 +1,8 @@
+---
+name: next-step-prioritizer
+description: Rank next actions by leverage, confidence, dependency availability, and business readiness.
+---
+
 # next-step-prioritizer
 
 ## Purpose

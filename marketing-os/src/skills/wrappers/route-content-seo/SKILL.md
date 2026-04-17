@@ -1,3 +1,8 @@
+---
+name: route-content-seo
+description: Route content and SEO work.
+---
+
 # route-content-seo
 
 ## Purpose

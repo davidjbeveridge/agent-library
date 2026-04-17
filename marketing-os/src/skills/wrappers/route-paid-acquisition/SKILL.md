@@ -1,3 +1,8 @@
+---
+name: route-paid-acquisition
+description: Route paid acquisition work.
+---
+
 # route-paid-acquisition
 
 ## Purpose

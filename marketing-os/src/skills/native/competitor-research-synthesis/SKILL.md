@@ -1,3 +1,8 @@
+---
+name: competitor-research-synthesis
+description: Synthesize competitors and alternatives from available evidence.
+---
+
 # competitor-research-synthesis
 
 ## Purpose

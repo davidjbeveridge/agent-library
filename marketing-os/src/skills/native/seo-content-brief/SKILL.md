@@ -1,3 +1,8 @@
+---
+name: seo-content-brief
+description: Produce a content cluster plan, article briefs, comparison pages, and internal linking suggestions.
+---
+
 # seo-content-brief
 
 ## Purpose

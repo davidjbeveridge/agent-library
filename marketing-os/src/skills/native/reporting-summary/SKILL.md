@@ -1,3 +1,8 @@
+---
+name: reporting-summary
+description: Summarize current state, what was tried, what was learned, and what to do next.
+---
+
 # reporting-summary
 
 ## Purpose

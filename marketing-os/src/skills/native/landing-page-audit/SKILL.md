@@ -1,3 +1,8 @@
+---
+name: landing-page-audit
+description: Audit a page or page copy for friction, clarity gaps, CTA issues, trust gaps, and experiments.
+---
+
 # landing-page-audit
 
 ## Purpose

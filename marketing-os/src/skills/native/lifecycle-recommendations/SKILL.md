@@ -1,3 +1,8 @@
+---
+name: lifecycle-recommendations
+description: Generate onboarding, nurture, retention, upsell, and churn reduction suggestions.
+---
+
 # lifecycle-recommendations
 
 ## Purpose

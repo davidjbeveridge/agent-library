@@ -1,3 +1,8 @@
+---
+name: context-synthesis
+description: Turn raw business input into normalized marketing context.
+---
+
 # context-synthesis
 
 ## Purpose

@@ -1,3 +1,8 @@
+---
+name: audience-research-synthesis
+description: Produce ICPs, personas, pains, objections, and buying triggers.
+---
+
 # audience-research-synthesis
 
 ## Purpose

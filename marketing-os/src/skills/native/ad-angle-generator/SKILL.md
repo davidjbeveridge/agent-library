@@ -1,3 +1,8 @@
+---
+name: ad-angle-generator
+description: Produce ad hooks, angles, offers, and a testing matrix in no-dependency mode.
+---
+
 # ad-angle-generator
 
 ## Purpose
