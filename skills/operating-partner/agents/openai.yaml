@@ -1,0 +1,4 @@
+interface:
+  display_name: "Operating Partner"
+  short_description: "Proactive operating system for live context refresh, leverage-ranked initiatives, standing charters, and bounded autonomous execution"
+  default_prompt: "Use $operating-partner to build a live operating picture from my current context, rank the highest-leverage strategic, tactical, and technical opportunities, define any needed standing initiative charters, and either propose or execute bounded next actions."
