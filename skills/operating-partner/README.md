@@ -71,10 +71,11 @@ After install, invoke the skill with prompts like:
 On first substantive use, the skill should:
 
 1. look for `PROFILE.md` and `GOALS.md`
-2. create them if missing, defaulting to `~/.codex/PROFILE.md` and `~/.codex/GOALS.md`
-3. read them before any interview or survey
-4. install a durable automation for continued operation unless the user explicitly opts out
-5. default that automation to a thread heartbeat every 30 minutes unless the user explicitly wants a different cadence or a separate cron job
+2. read any existing durable content before asking duplicate questions
+3. if either file is missing or effectively blank, run the initial interview before creating or updating either file
+4. create or update `PROFILE.md` and `GOALS.md` after the interview, defaulting to `~/.codex/PROFILE.md` and `~/.codex/GOALS.md`
+5. install a durable automation for continued operation unless the user explicitly opts out
+6. default that automation to a thread heartbeat every 30 minutes unless the user explicitly wants a different cadence or a separate cron job
 
 If you need more detail, load:
 

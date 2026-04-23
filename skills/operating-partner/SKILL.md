@@ -1,6 +1,6 @@
 ---
 name: operating-partner
-description: Use when Codex should act as a proactive operating partner or personal operating system: maintain a live operating picture, refresh context frequently, surface strategic, tactical, and technical leverage opportunities, define standing initiative charters, and execute within bounded authority instead of waiting for one-off prompts.
+description: "Use when Codex should act as a proactive operating partner or personal operating system: maintain a live operating picture, refresh context frequently, surface strategic, tactical, and technical leverage opportunities, define standing initiative charters, and execute within bounded authority instead of waiting for one-off prompts."
 ---
 
 # Operating Partner
@@ -55,7 +55,7 @@ Read `references/operating-model.md` for the complete design.
 For substantial work, read in this order:
 
 1. `references/durable-reference-points.md`
-2. existing `PROFILE.md` and `GOALS.md` if present
+2. existing `PROFILE.md` and `GOALS.md` if present and materially populated
 3. `references/operating-model.md`
 4. `references/context-refresh.md`
 5. `references/memory-interface.md`
@@ -69,8 +69,8 @@ Load only what the current task needs.
 ## Default Procedure
 
 1. Resolve the canonical `PROFILE.md` and `GOALS.md` paths.
-2. Read `PROFILE.md` and `GOALS.md` before any survey, interview, or calibration questions.
-3. If either file is missing, create it from the corresponding template before continuing.
+2. If both files exist and already contain durable user-specific context, read them before any survey, interview, or calibration questions.
+3. If either file is missing or effectively blank, treat that as first substantive run: perform the initial interview first, then create or update `PROFILE.md` and `GOALS.md` from the relevant templates using the interview results.
 4. Resolve the memory interface:
    - prefer `durable-memory` when available
    - otherwise fall back to Codex native memory
@@ -87,6 +87,21 @@ Load only what the current task needs.
 10. Convert approved work into explicit initiatives or charters rather than vague intentions.
 11. Execute within the approved authority boundary.
 12. Measure whether the work reduced user load or improved results.
+
+## Initial Interview
+
+On first substantive run, keep the interview short and focused on durable context that does not already exist elsewhere.
+
+Minimum coverage:
+
+- role and recurring responsibilities
+- current goals and target outcomes
+- active initiatives and major stakeholders
+- preferences, guardrails, and escalation boundaries
+- desired operating cadence
+- memory interface, if it is not already obvious from available tools
+
+Ask only for missing durable context. After the interview, write the first durable baseline to `PROFILE.md` and `GOALS.md` immediately instead of leaving it only in chat.
 
 ## Durable Reference Points
 
@@ -113,7 +128,7 @@ Default path resolution order:
 - success criteria
 - review horizon
 
-Always read both files before interviewing the user. When an interview surfaces better information, update the files rather than leaving the improvement only in chat.
+On later runs, read both files before interviewing the user. On first run, do the initial interview before the first write to either file. When an interview surfaces better information, update the files rather than leaving the improvement only in chat.
 
 ## Context Refresh Rules
 
@@ -239,7 +254,8 @@ Within a standing charter, do not ask for approval on every tool call needed to 
 ## Verification Checklist
 
 - The operating picture distinguishes fresh signals from durable facts.
-- `PROFILE.md` and `GOALS.md` were read before any interview work.
+- On later runs, `PROFILE.md` and `GOALS.md` were read before any interview work.
+- On first run, the initial interview happened before the first write to `PROFILE.md` or `GOALS.md`.
 - Any newly learned durable context was written back to `PROFILE.md` or `GOALS.md`.
 - The chosen memory interface is recorded and reused.
 - The proposed work is ranked by leverage, not by ease alone.
