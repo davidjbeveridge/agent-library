@@ -1,0 +1,4 @@
+interface:
+  display_name: "Autonomous Role Operator"
+  short_description: "Turn any role into an autonomous Codex operating system"
+  default_prompt: "Use $autonomous-role-operator to build and optionally implement an autonomous operating system for my role."
